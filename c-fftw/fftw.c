@@ -6,14 +6,13 @@ void dft(int n0, fftw_complex *in, fftw_complex *out, int sign, unsigned flags) 
     fftw_destroy_plan(plan);
 }
 
-fftw_complex in[16];
-fftw_complex out[16];
+fftw_complex data[16];
 
 int main() {
-    in[0][0] = 1.0;
-    dft(16, in, out, -1, 0);
+    data[0][0] = 1.0;
+    dft(16, data, data, -1, FFTW_ESTIMATE);
     for (int i = 0; i < 16; i++) {
-        printf("%f+%fi\n", out[i][0], out[i][1]);
+        printf("%f+%fi\n", data[i][0], data[i][1]);
     }
     return 0;
 }
